@@ -1,21 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachinder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-   <head itemscope itemtype="http://schema.org/WebSite">
+<body>
 
-      <meta charset="utf-8">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <meta name="msapplication-tap-highlight" content="no">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div class="page">
 
-      <title>Project</title>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-top">
+                <div class="logo">Teachinder</div>
+                <div class="search">
+                    <input type="text" placeholder="Name, note or age to search" />
+                    <button class="search-btn">Search</button>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <nav class="navigation">
+                    <a href="">Teachers</a>
+                    <a href="">Statistics</a>
+                    <a href="">Favorites</a>
+                    <a href="">About</a>
+                </nav>
+                <a href="#add-teacher">
+                    <button class="add-teacher-btn">Add teacher</button>
+                </a>
+            </div>
+        </header>
 
-      <link rel="stylesheet" href="./css/app.css">
+        <div class="separator"></div>
 
-   </head>
+        <!-- TOP TEACHERS -->
+        <section class="top-teachers">
+            <h2>Top Teachers</h2>
 
-   <body itemscope itemtype="http://schema.org/WebPage">
-      <script type="text/javascript" src="./js/app.js"></script>
-      
-  </body>
+            <!-- FILTERS -->
+            <div class="teachers-filters">
+                <div class="filter">
+                    <span>Age</span>
+                    <select>
+                        <option>18-31</option>
+                    </select>
+                </div>
+
+                <div class="filter-separator"></div>
+
+                <div class="filter">
+                    <span>Region</span>
+                    <select class="region-select">
+                        <option>Europe</option>
+                    </select>
+                </div>
+
+                <div class="filter-separator"></div>
+
+                <div class="filter">
+                    <span>Sex</span>
+                    <select class="sex-select">
+                        <option>Male</option>
+                    </select>
+                </div>
+
+                <div class="filter-separator"></div>
+
+                <div class="filter">
+                    <input type="checkbox" />
+                    <span>Only with photo</span>
+                </div>
+
+                <div class="filter-separator checkbox-separator"></div>
+
+                <div class="filter">
+                    <input type="checkbox" />
+                    <span>Only favorites</span>
+                </div>
+            </div>
+
+            <!-- TEACHER LIST -->
+            <div class="teachers-list">
+                <a href="#teacher-ihor" class="teacher-card-link">
+                    <div class="teacher-card">
+                        <div class="teacher-photo">
+                            <img src="images/teacher1.png" alt="Ihor Tkachuk">
+                        </div>
+                        <h3>Ihor<br>Tkachuk</h3>
+                        <p class="teacher-subject">Chemistry</p>
+                        <p class="teacher-country">Ukraine</p>
+                    </div>
+                </a>
+
+
+                <div class="teacher-card">
+                    <div class="teacher-photo">
+                        <img src="images/teacher2.png" alt="Pragg Rameshbabu">
+                    </div>
+                    <h3>Pragg<br>Rameshbabu</h3>
+                    <p class="teacher-subject">Chess</p>
+                    <p class="teacher-country">India</p>
+                </div>
+
+
+                <div class="teacher-card favorite">
+                    <div class="teacher-photo">
+                        <img src="images/teacher3.png" alt="Floor Jansen">
+                    </div>
+                    <span class="favorite-star">★</span>
+                    <h3>Floor<br>Jansen</h3>
+                    <p class="teacher-subject">Vocal</p>
+                    <p class="teacher-country">Denmark</p>
+                </div>
+
+
+                <div class="teacher-card">
+                    <div class="teacher-photo">
+                        <img src="images/teacher4.png" alt="John Burke">
+                    </div>
+                    <h3>John<br>Burke</h3>
+                    <p class="teacher-subject">Computer Science</p>
+                    <p class="teacher-country">Belgium</p>
+                </div>
+
+
+                <div class="teacher-card favorite">
+                    <div class="teacher-photo">
+                        <img src="images/teacher5.png" alt="Ari Tang">
+                    </div>
+                    <span class="favorite-star">★</span>
+                    <h3>Ari<br>Tang</h3>
+                    <p class="teacher-subject">Biology</p>
+                    <p class="teacher-country">China</p>
+                </div>
+
+
+                <div class="teacher-card">
+                    <div class="teacher-photo">
+                        <img src="images/teacher6.png" alt="Rachel Andrew">
+                    </div>
+                    <h3>Rachel<br>Andrew</h3>
+                    <p class="teacher-subject">Medicine</p>
+                    <p class="teacher-country">UK</p>
+                </div>
+
+
+                <div class="teacher-card">
+                    <div class="teacher-photo no-photo"><span>A.M</span></div>
+                    <h3>Anna<br>Muzychuk</h3>
+                    <p class="teacher-subject">Chess</p>
+                    <p class="teacher-country">USA</p>
+                </div>
+
+
+                <div class="teacher-card">
+                    <div class="teacher-photo no-photo"><span>R.L</span></div>
+                    <h3>Radoslaw<br>Ljubojevic</h3>
+                    <p class="teacher-subject">Physics</p>
+                    <p class="teacher-country">Poland</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- STATISTICS -->
+        <section class="statistics">
+            <h2>Statistics</h2>
+
+            <!-- TABLE -->
+            <table class="statistics-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Speciality <span>↓</span></th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Nationality</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Daisy Alexander</td>
+                        <td>Chemistry</td>
+                        <td>28</td>
+                        <td>Female</td>
+                        <td>Vietnam</td>
+                    </tr>
+
+                    <tr>
+                        <td>Julia Bradley</td>
+                        <td>Math</td>
+                        <td>26</td>
+                        <td>Female</td>
+                        <td>USA</td>
+                    </tr>
+
+                    <tr>
+                        <td>Rita Hart</td>
+                        <td>Art</td>
+                        <td>41</td>
+                        <td>Female</td>
+                        <td>Ireland</td>
+                    </tr>
+
+                    <tr>
+                        <td>Jonathan Jacobs</td>
+                        <td>Math</td>
+                        <td>32</td>
+                        <td>Male</td>
+                        <td>England</td>
+                    </tr>
+
+                    <tr>
+                        <td>Nathaniel White</td>
+                        <td>Computer Science</td>
+                        <td>37</td>
+                        <td>Male</td>
+                        <td>Austria</td>
+                    </tr>
+
+                    <tr>
+                        <td>Frank Medina</td>
+                        <td>English</td>
+                        <td>43</td>
+                        <td>Male</td>
+                        <td>Italy</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ella Curtis</td>
+                        <td>Chess</td>
+                        <td>34</td>
+                        <td>Female</td>
+                        <td>USA</td>
+                    </tr>
+
+                    <tr>
+                        <td>Claire Simmons</td>
+                        <td>Art</td>
+                        <td>38</td>
+                        <td>Female</td>
+                        <td>Netherlands</td>
+                    </tr>
+
+                    <tr>
+                        <td>Benjamin Knight</td>
+                        <td>Biology</td>
+                        <td>44</td>
+                        <td>Male</td>
+                        <td>Scotland</td>
+                    </tr>
+
+                    <tr>
+                        <td>Norma Rose</td>
+                        <td>Statistics</td>
+                        <td>36</td>
+                        <td>Female</td>
+                        <td>France</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="page-numbers">
+                <span>1</span>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <span>...</span>
+                <a href="#">Last</a>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- FAVORITES -->
+        <section class="favorite">
+            <h2 class="favorites-title">Favorites</h2>
+            <button class="favorite-arrow favorite-arrow-left">&#10094;</button>
+            <!-- TEACHER LIST -->
+            <div class="teachers-list-favorites">
+
+                <div class="teacher-card">
+                    <div class="teacher-photo">
+                        <img src="images/teacher1.png" alt="Ihor Tkachuk">
+                    </div>
+                    <h3>Ihor<br>Tkachuk</h3>
+                    <p class="teacher-country">Ukraine</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-photo no-photo">
+                        <span>A.M</span>
+                    </div>
+                    <h3>Anna<br>Makarevich</h3>
+                    <p class="teacher-country">USA</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-photo">
+                        <img src="images/teacher4.png" alt="John Burke">
+                    </div>
+                    <h3>John<br>Burke</h3>
+                    <p class="teacher-country">Belgium</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-photo">
+                        <img src="images/teacher5.png" alt="Ari Tang">
+                    </div>
+                    <h3>Ari<br>Tang</h3>
+                    <p class="teacher-country">China</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-photo">
+                        <img src="images/teacher3.png" alt="Floor Jansen">
+                    </div>
+                    <h3>Floor<br>Jansen</h3>
+                    <p class="teacher-country">Denmark</p>
+                </div>
+            </div>
+
+            <button class="favorite-arrow favorite-arrow-right">&#10095;</button>
+        </section>
+
+
+        <div class="separator"></div>
+
+        <!-- DESCRIPTION -->
+        <section class="description">
+            <div class="description-text">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing edit.
+                    A atque facere, hic impedit itaque molestiae sit tempore?
+                    Ea in mollitia natus rerum voluptates. Ea ex excepturi facere tempora.
+                    Aliquid asperiores hic impedit iusto natus quaerat ratione sit?
+                    Culpa iusto optio voluptas voluptate. Enim eveniet fugit iure maiores
+                    molestiae, praesentium quia.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+                    eligendi illum in inventore ipsum odio officiis omnis quisquam sed
+                    tempora?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque esse
+                    expedita id iusto mollitia, odit sint ullam veritatis vero?
+                </p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-content">
+                <nav class="footer-nav">
+                    <a href="#">Teachers</a>
+                    <a href="#">Statistics</a>
+                    <a href="#">Favorites</a>
+                    <a href="#">About</a>
+                </nav>
+                <a href="#add-teacher">
+                    <button class="add-teacher-button">Add teacher</button>
+                </a>
+            </div>
+        </footer>
+
+        <!-- MODAL INFO THEACHER -->
+        <div class="modal" id="teacher-ihor">
+            <div class="teacher-modal">
+
+                <div class="modal-header">
+                    <h2>Teacher Info</h2>
+                    <a href="#" class="modal-close">&times;</a>
+                </div>
+
+                <div class="modal-content">
+                    <div class="modal-main">
+
+                        <div class="modal-photo">
+                            <img src="images/teacher1.png" alt="Ihor Tkachuk">
+                        </div>
+
+                        <div class="modal-info">
+                            <div class="modal-name-row">
+                                <h3>Ihor Tkachuk</h3>
+                                <span class="modal-star">☆</span>
+                            </div>
+                            <h4>Chemistry</h4>
+                            <p>Kyiv, Ukraine</p>
+                            <p>35, Male</p>
+                            <a href="mailto:ihor_tkachuk@domain.com">ihor_tkachuk@domain.com</a>
+                            <p>+380964993252</p>
+                        </div>
+                    </div>
+
+                    <div class="modal-description">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Ab autem consectetur culpa cumque, distinctio dolor dolore
+                            dolorem doloremque ea explicabo facilis nam nesciunt nisi
+                            pariatur perspiciatis porro quis similique temporibus veniam
+                            veritatis? A ab ad, aliquam amet consequatur cupiditate
+                            debitis deserunt doloribus dolorum earum eius eos minus
+                            nostrum odit omnis perferendis...
+                        </p>
+                    </div>
+                    <a href="#" class="toggle-map">toggle map</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL ADD THEACHER -->
+        <div class="modal" id="add-teacher">
+            <div class="add-teacher-modal">
+                
+                <div class="modal-header">
+                    <h2>Add Teacher</h2>
+                    <a href="#" class="modal-close">&times;</a>
+                </div>
+
+                <div class="add-teacher-content">
+
+                    <div class="form-group full-width">
+                        <label>Name</label>
+                        <input type="text" placeholder="Enter name">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Speciality</label>
+                        <select>
+                            <option>Mathematics</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Country</label>
+                            <select>
+                                <option>Ukraine</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel">
+                        </div>
+                    </div>
+
+                    <div class="form-group date-field">
+                        <label>Date of birth</label>
+                        <input type="date" lang="en-US">
+                    </div>
+
+                    <div class="form-group sex-group">
+                        <label>Sex</label>
+                        <div class="sex-options">
+                            <span>Male</span>
+                            <input type="radio" name="sex">
+                            <span>Female</span>
+                            <input type="radio" name="sex">
+                        </div>
+                    </div>
+
+                    <div class="form-group color-group">
+                        <label>Background color</label>
+                        <div class="color-input">
+                            <input type="color" value="#000000">
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Notes (optional)</label>
+                        <textarea></textarea>
+                    </div>
+
+                    <button class="add-button">Add</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
 </html>
