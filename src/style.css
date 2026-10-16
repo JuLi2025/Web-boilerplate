@@ -305,6 +305,7 @@ h2 {
     color: #fff200;
     font-size: 27px;
     z-index: 2;
+    cursor: pointer;
 }
 
 .teacher-photo.no-photo {
@@ -551,6 +552,10 @@ h2 {
     display: flex;
 }
 
+.modal.closed {
+    display: none;
+}
+
 .teacher-modal {
     width: 750px;
     height: 450px;
@@ -588,6 +593,8 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
+    border: none;
 }
 
 .modal-content {
@@ -639,6 +646,7 @@ h2 {
     font-size: 30px;
     line-height: 1;
     margin-top: 4px;
+    cursor: pointer;
 }
 
 .modal-info h4 {

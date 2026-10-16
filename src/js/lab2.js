@@ -43,24 +43,92 @@ function usersFormat(userList){
     });
 }
 
-function joinUsers(userList1, userList2){
-    const allUserList = [...userList1, ...userList2]
+
+function joinUsers(userList1, userList2) {
+    const allUserList = [...userList1, ...userList2];
     const uniqueUsers = [];
-    for(let i = 0; i < allUserList.length; i++){
-        const user = uniqueUsers.find(item => item.full_name === allUserList[i].full_name)
-        if (!user) {
-            uniqueUsers.push(allUserList[i]);
+
+    for (let i = 0; i < allUserList.length; i++) {
+        const currentUser = allUserList[i];
+
+        const existingUser = uniqueUsers.find(
+            user => user.full_name === currentUser.full_name
+        );
+
+        if (!existingUser) {
+            uniqueUsers.push({ ...currentUser });
+        } else {
+            if (currentUser.favorite !== undefined) {
+                existingUser.favorite = currentUser.favorite;
+            }
+
+            if (currentUser.course !== undefined && currentUser.course !== null) {
+                existingUser.course = currentUser.course;
+            }
+
+            if (currentUser.bg_color !== undefined && currentUser.bg_color !== null) {
+                existingUser.bg_color = currentUser.bg_color;
+            }
+
+            if (currentUser.note !== undefined && currentUser.note !== null) {
+                existingUser.note = currentUser.note;
+            }
+
+            for (const key in currentUser) {
+                const currentValue = currentUser[key];
+                const existingValue = existingUser[key];
+
+                if (
+                    existingValue === undefined ||
+                    existingValue === null ||
+                    existingValue === ""
+                ) {
+                    if (
+                        currentValue !== undefined &&
+                        currentValue !== null &&
+                        currentValue !== ""
+                    ) {
+                        existingUser[key] = currentValue;
+                    }
+                } else if (
+                    typeof existingValue === "object" &&
+                    existingValue !== null &&
+                    typeof currentValue === "object" &&
+                    currentValue !== null &&
+                    !Array.isArray(existingValue) &&
+                    !Array.isArray(currentValue)
+                ) {
+                    for (const nestedKey in currentValue) {
+                        if (
+                            existingValue[nestedKey] === undefined ||
+                            existingValue[nestedKey] === null ||
+                            existingValue[nestedKey] === ""
+                        ) {
+                            if (
+                                currentValue[nestedKey] !== undefined &&
+                                currentValue[nestedKey] !== null &&
+                                currentValue[nestedKey] !== ""
+                            ) {
+                                existingValue[nestedKey] = currentValue[nestedKey];
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
-    return uniqueUsers
+
+    return uniqueUsers;
 }
+
+
 const formattedUsers = usersFormat(randomUserMock);
 const allUsers = joinUsers(formattedUsers, additionalUsers)
-// console.log(allUsers.length);
+console.log(allUsers);
 
 // ЗАВДАННЯ 2
 
-function validateUser(user) {
+export function validateUser(user) {
 
     function validString(value){
         return typeof value === "string" && /^[A-ZА-ЯІЇЄҐ]/.test(value);
@@ -117,8 +185,9 @@ function validateUser(user) {
     return (
         validString(user.full_name) &&
         validString(user.gender) &&
-        validString(user.note) &&
-        validString(user.state) &&
+        typeof user.note === "string" &&
+        (user.note === "" || validString(user.note)) &&
+        (!user.state || validString(user.state)) &&
         validString(user.city) &&
         validString(user.country) &&
         typeof user.age === "number" &&
@@ -129,8 +198,7 @@ function validateUser(user) {
 // console.log(validateUser(allUsers[0]));
 
 // ЗАВДАННЯ 3
-
-function filterUsersByParameters(userList, filters){
+export function filterUsersByParameters(userList, filters){
     return userList.filter(user => {
         if (filters.country !== undefined && user.country !== filters.country) {
             return false;
@@ -162,30 +230,56 @@ function filterUsersByParameters(userList, filters){
 
 // ЗАВДАННЯ 4
 
+
 function sortUsersByParameters(userList, parameter, order = "asc") {
-    return [...userList]
-        .filter(user => user[parameter] !== undefined)
-        .sort((a, b) => {
 
-            if (a[parameter] < b[parameter]) {
-                if (order === "asc") {
-                    return -1;
-                } else {
-                    return 1;
-                }
-            }
+    return [...userList].sort((a, b) => {
 
-            if (a[parameter] > b[parameter]) {
-                if (order === "asc") {
-                    return 1;
-                } else {
-                    return -1;
-                }
-            }
+        const valueA = a[parameter];
+        const valueB = b[parameter];
 
+        const emptyA = valueA === undefined || valueA === null || valueA === "";
+        const emptyB = valueB === undefined || valueB === null || valueB === "";
+
+        if (emptyA && emptyB) {
             return 0;
-        });
+        }
+
+        if (emptyA) {
+            return 1;
+        }
+
+        if (emptyB) {
+            return -1;
+        }
+
+        let aValue = valueA;
+        let bValue = valueB;
+
+        if (parameter === "age") {
+            aValue = Number(valueA);
+            bValue = Number(valueB);
+        }
+
+        if (parameter === "b_day") {
+            aValue = new Date(valueA).getTime();
+            bValue = new Date(valueB).getTime();
+        }
+
+        let result;
+
+        if (parameter === "full_name" || parameter === "country") {
+            result = String(aValue).localeCompare(String(bValue), "uk", {
+                sensitivity: "base"
+            });
+        } else {
+            result = aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
+        }
+
+        return order === "asc" ? result : -result;
+    });
 }
+
 
 
 // const sortedUsers = sortUsersByParameters(allUsers, "age", "asc");
@@ -217,3 +311,5 @@ function getUsersByPercentage(userList, condition) {
 // const percentage = getUsersByPercentage(allUsers, user => user.favorite === true);
 // const percentage = getUsersByPercentage(allUsers, user => user.country === "Germany");
 // console.log(percentage);
+
+export { allUsers };
