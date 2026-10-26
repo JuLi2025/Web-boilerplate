@@ -334,6 +334,74 @@ h2 {
 
 
 
+/* PAGINATION */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+#page-numbers {
+    display: flex;
+    gap: 8px;
+}
+
+.pagination button {
+    min-width: 38px;
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid #F75C48;
+    background-color: white;
+    color: #F75C48;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: #F75C48;
+    color: white;
+}
+
+.pagination button.active {
+    background-color: #F75C48;
+    color: white;
+    border-color: #F75C48;
+}
+
+.pagination button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.statistics-pagination button {
+    color: #4ba8c8;
+    background-color: white;
+    border: 1px solid #4ba8c8;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.statistics-pagination button:hover {
+    color: white;
+    background-color: #F75C48;
+    border-color: #F75C48;
+}
+
+.statistics-pagination button.active {
+    color: white;
+    background-color: #4ba8c8;
+    border-color: #4ba8c8;
+}
+
+
+
 /* STATISTICS */
 .statistics {
     margin: 20px 60px;
@@ -431,7 +499,6 @@ h2 {
     color: #F75C48;
     text-decoration: underline;
 }
-
 
 
 

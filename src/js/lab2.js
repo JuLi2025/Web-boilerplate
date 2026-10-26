@@ -10,7 +10,7 @@ function getRandomCourse(){
     return list_of_courses[index]
 }
 
-function usersFormat(userList){
+export function usersFormat(userList){
     return userList.map(user =>{
         return{
             gender: user.gender,
