@@ -1,0 +1,56 @@
+{
+  "teachers": [
+    {
+      "full_name": "Test",
+      "course": "Mathematics",
+      "country": "Australia",
+      "city": "Test",
+      "email": "test@",
+      "phone": "02-6397-0344",
+      "b_date": "2000-02-22",
+      "age": 26,
+      "gender": "Male",
+      "state": "",
+      "note": "",
+      "bg_color": "#000000",
+      "favorite": false,
+      "picture_large": "",
+      "id": "gZeyF6RHklw"
+    },
+    {
+      "full_name": "Test",
+      "course": "Mathematics",
+      "country": "Australia",
+      "city": "Test",
+      "email": "test@",
+      "phone": "02-6397-0344",
+      "b_date": "2000-02-22",
+      "age": 26,
+      "gender": "Male",
+      "state": "",
+      "note": "",
+      "bg_color": "#000000",
+      "favorite": false,
+      "picture_large": "",
+      "id": "PSK8Njicrh8"
+    },
+    {
+      "full_name": "Test",
+      "course": "Mathematics",
+      "country": "Australia",
+      "city": "Test",
+      "email": "test@",
+      "phone": "02-6397-0344",
+      "b_date": "0200-02-22",
+      "age": 1826,
+      "gender": "Female",
+      "state": "",
+      "note": "",
+      "bg_color": "#000000",
+      "favorite": false,
+      "picture_large": "",
+      "id": "6Ga6NA18Fsk"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
