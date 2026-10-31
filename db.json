@@ -50,6 +50,23 @@
       "favorite": false,
       "picture_large": "",
       "id": "6Ga6NA18Fsk"
+    },
+    {
+      "full_name": "Test",
+      "course": "Mathematics",
+      "country": "Australia",
+      "city": "Test",
+      "email": "test@",
+      "phone": "02-6397-0344",
+      "b_date": "2000-03-27",
+      "age": 26,
+      "gender": "Male",
+      "state": "",
+      "note": "",
+      "bg_color": "#000000",
+      "favorite": false,
+      "picture_large": "",
+      "id": "mSMLYBC9JRY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

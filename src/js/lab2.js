@@ -10,9 +10,9 @@ function getRandomCourse(){
     return list_of_courses[index]
 }
 
-export function usersFormat(userList){
-    return userList.map(user =>{
-        return{
+export function usersFormat(userList) {
+    return _.map(userList, user => {
+        return {
             gender: user.gender,
             title: user.name.title,
             full_name: user.name.first + " " + user.name.last,
@@ -34,7 +34,7 @@ export function usersFormat(userList){
             phone: user.phone,
             picture_large: user.picture.large,
             picture_thumbnail: user.picture.thumbnail,
-            id: user.id.value === null? "": user.id.name + user.id.value,
+            id: user.id.value === null ? "" : user.id.name + user.id.value,
             favorite: false,
             course: getRandomCourse(),
             bg_color: "#ffffff",
@@ -42,6 +42,7 @@ export function usersFormat(userList){
         };
     });
 }
+
 
 
 function joinUsers(userList1, userList2) {
@@ -130,9 +131,9 @@ console.log(allUsers);
 
 export function validateUser(user) {
 
-    function validString(value){
-        return typeof value === "string" && /^[A-ZА-ЯІЇЄҐ]/.test(value);
-    };
+    function validString(value) {
+        return _.isString(value) && /^[A-ZА-ЯІЇЄҐ]/.test(value);
+    }
 
     function validPhone(phone, country){
 
@@ -192,14 +193,15 @@ export function validateUser(user) {
         validString(user.country) &&
         typeof user.age === "number" &&
         validPhone(user.phone, user.country) &&
-        typeof user.email === "string" && user.email.includes("@")
+        _.isString(user.email) && _.includes(user.email, "@")
     );
 }
 // console.log(validateUser(allUsers[0]));
 
 // ЗАВДАННЯ 3
-export function filterUsersByParameters(userList, filters){
-    return userList.filter(user => {
+
+export function filterUsersByParameters(userList, filters) {
+    return _.filter(userList, user => {
         if (filters.country !== undefined && user.country !== filters.country) {
             return false;
         }
@@ -220,6 +222,7 @@ export function filterUsersByParameters(userList, filters){
     });
 }
 
+
 // const filteredUsers = filterUsersByParameters(allUsers, {
 //     country: "Denmark",
 //     gender: "male",
@@ -229,7 +232,6 @@ export function filterUsersByParameters(userList, filters){
 
 
 // ЗАВДАННЯ 4
-
 
 function sortUsersByParameters(userList, parameter, order = "asc") {
 

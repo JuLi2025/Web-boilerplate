@@ -6,8 +6,8 @@ async function getUsers() {
         if (!response.ok) {
             throw new Error('Помилка отримання даних');
         }
-        const data = await response.json()
-        return data.results
+        const data = await response.json()   // перетворення з json in js об'єкт
+        return data.results                  // чистий результаі
     }
     catch (error) {
         console.error('Помилка отримання даних:', error);
@@ -75,8 +75,6 @@ function renderPageNumbers() {
         });
         pageNumbers.append(button);
     }
-    prevButton.disabled = currentPage === 1;
-    nextButton.disabled = isLoading;
 }
 
 const teachersList = document.querySelector(".teachers-list")
@@ -166,8 +164,7 @@ prevButton.addEventListener("click", () => {
 });
 
 nextButton.addEventListener("click", async () => {
-    const totalPages = Math.ceil(currentTeachers.length / usersPerPage
-    );
+    const totalPages = Math.ceil(currentTeachers.length / usersPerPage);
     if (currentPage < totalPages) {
         currentPage++;
         renderCurrentPage();
@@ -486,9 +483,9 @@ addTeacherButton.addEventListener("click", async function () {
         const response = await fetch("http://localhost:3001/teachers", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json"  // дані в json
             },
-            body: JSON.stringify(teacher)
+            body: JSON.stringify(teacher)  // з об'єкта js в json
         });
 
         if (!response.ok) {

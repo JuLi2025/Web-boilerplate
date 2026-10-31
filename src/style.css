@@ -626,10 +626,16 @@ h2 {
 .teacher-modal {
     width: 750px;
     height: 450px;
-
     background: white;
     border-radius: 3px;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+}
+
+.teacher-modal {
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
 }
 
@@ -667,6 +673,7 @@ h2 {
 .modal-content {
     padding: 18px 18px 0px 18px;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 .modal-main {
@@ -759,6 +766,17 @@ h2 {
     text-underline-offset: 4px;
 }
 
+.teacher-map {
+    width: 100%;
+    height: 300px;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.teacher-map.hidden {
+    display: none;
+}
 
 
 
